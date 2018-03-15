@@ -1,0 +1,228 @@
+{
+  "links": {
+    "_self": "https://api.blablacar.com/api/v2/trips?_locale=en_GB",
+    "_front": "https://www.blablacar.co.uk/search?fn=huez&tn=lyon+saint+exup%C3%A9ry&db=17/03/2018&de=17/03/2018"
+  },
+  "pager": {
+    "page": 1,
+    "pages": 1,
+    "total": 2,
+    "limit": 100
+  },
+  "trips": [
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1010413095-le-bourg-d-oisans-colombier-saugnieu?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-le-bourg-d-oisans-colombier-saugnieu-1010413095",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1010413095-le-bourg-d-oisans-colombier-saugnieu/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 07:40:00",
+      "departure_place": {
+        "city_name": "Le Bourg-d'Oisans",
+        "address": "D1091, 38520 Le Bourg-d'Oisans, France",
+        "latitude": 45.067069,
+        "longitude": 6.021482,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Colombier-Saugnieu",
+        "address": "Rue de Finlande, 69125 Colombier-Saugnieu, France",
+        "latitude": 45.720366,
+        "longitude": 5.078174,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 9,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£9",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 11,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£11.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 9,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£9",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 2,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£2.00"
+      },
+      "seats_left": 2,
+      "seats": 2,
+      "duration": {
+        "value": 6000,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 136,
+        "unity": "km"
+      },
+      "permanent_id": "1010413095-le-bourg-d-oisans-colombier-saugnieu",
+      "car": {
+        "id": "520525",
+        "model": "GOLF",
+        "make": "VOLKSWAGEN",
+        "comfort": "Comfortable",
+        "comfort_nb_star": 3
+      },
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Vénosc",
+        "Le Bourg-d'Oisans",
+        "Colombier-Saugnieu",
+        "Orvault"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMTA0MTMwOTUQARILCAISB3UwaDIzaDAaCwgCEgd1MDVzNWUx"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/990290622-vaujany-colombier-saugnieu?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-vaujany-colombier-saugnieu-990290622",
+        "_threads": "https://api.blablacar.com/api/v2/trips/990290622-vaujany-colombier-saugnieu/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 09:00:00",
+      "departure_place": {
+        "city_name": "Vaujany",
+        "address": "residence  Les Haut de la Drayre a Vaujany",
+        "latitude": 45.158913,
+        "longitude": 6.077653,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Colombier-Saugnieu",
+        "address": "Gare de Lyon Saint-Exupéry, Colombier-Saugnieu, France",
+        "latitude": 45.720907,
+        "longitude": 5.075826,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 8,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£8",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 10,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£10.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 8,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£8",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 2,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£2.00"
+      },
+      "seats_left": 3,
+      "seats": 3,
+      "duration": {
+        "value": 6600,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 142,
+        "unity": "km"
+      },
+      "permanent_id": "990290622-vaujany-colombier-saugnieu",
+      "viaggio_rosa": false,
+      "is_comfort": false,
+      "freeway": true,
+      "booking_mode": "auto",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Vaujany",
+        "Colombier-Saugnieu"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg0KCTk5MDI5MDYyMhABEgsIAhIHdTBoMmZrYxoLCAISB3UwNXM1ZTA="
+    }
+  ],
+  "top_trips": [],
+  "facets": [
+    {
+      "name": "hour",
+      "type": "custom",
+      "items": [
+        {
+          "value": 7,
+          "count": 1,
+          "is_selected": true
+        },
+        {
+          "value": 8,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 9,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 10,
+          "count": 1,
+          "is_selected": true
+        }
+      ]
+    },
+    {
+      "name": "price",
+      "type": "custom",
+      "items": [
+        {
+          "value": 6.5,
+          "count": 1,
+          "is_selected": true
+        },
+        {
+          "value": 7,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 8,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 9,
+          "count": 1,
+          "is_selected": true
+        }
+      ]
+    }
+  ],
+  "distance": 147,
+  "duration": 6600,
+  "recommended_price": 11,
+  "savings": 33,
+  "lowest_price": 10,
+  "full_trips_count": 0,
+  "tracktor": "eNq1UsuO2zAM/JWFro0XkvOyfeyhvRZFb9uFwMi0o0KWDD2CTYP8e+lHHOwih/ZQwJBFDsUZjnRhjXcdq9gx4W+2GiOpXLLRn+lfI0Ffvt8AA1HHNCQ322deCLHb3BBn2xnaPfPtvhDljPQelQ6Ub8AEXLHoqKU5O/sUQNv4hG+p/5k4x9Kf2QA/pKf0O/J9vt6IQkzAnXtQVez3u2IEFuroEzHXEFEesNWWuuZcFBlfZ2L/g/Nq/D6NK5sL0dbvy/J1tS3pW8pGndJjSCYGVuXE6XUvm2SM7NErtJFVnGzQJqKf8qCiPlH7xY4T+qDdoKjGBqjTOGyQYFoyytKZWwOiuLCjS/42wwSOmVHsFPdeK5QdvH1I3E8EhEHvFJw0tK120rsAy4mjiws5JHISlMI+Lg2cp/007eAVm1LS+Ro9ARAUpTzUOi08rmkCTn4Y3WnaCc6vs2W6proXJrjgG7Hm5TYzmB1osDarM6cD2JApZ1x30OizAKm1GhNxlCXPS77L8+wE6RfY86Oy19UilUZ8uUwR3VAHlu6I2Enzv3NPvhqnwLCqvMUqeY9Wnanl18/fhsfkNd2xBFqgRenpFdt29GFG5md0z4/yhkuSBhsyKr+uHmv+q+k/CC3+o9D19fX6Byi8dLw=",
+  "sorting_algorithm": "trip_date"
+}

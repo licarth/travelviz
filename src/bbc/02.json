@@ -1,0 +1,739 @@
+{
+  "links": {
+    "_self": "https://api.blablacar.com/api/v2/trips?_locale=en_GB",
+    "_front": "https://www.blablacar.co.uk/search?fn=huez&tn=grenoble&db=17/03/2018"
+  },
+  "pager": {
+    "page": 1,
+    "pages": 1,
+    "total": 8,
+    "limit": 100
+  },
+  "trips": [
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1026090254-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1026090254",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1026090254-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 07:00:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "La Poste, Route de la Poste, Huez, France",
+        "latitude": 45.091644,
+        "longitude": 6.063719,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "Gare de Grenoble, Place de la Gare, Grenoble, France",
+        "latitude": 45.191507,
+        "longitude": 5.714501,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 1,
+      "seats": 2,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 63,
+        "unity": "km"
+      },
+      "permanent_id": "1026090254-huez-grenoble",
+      "car": {
+        "id": "22768584",
+        "model": "308",
+        "make": "PEUGEOT",
+        "comfort": "Comfortable",
+        "comfort_nb_star": 3
+      },
+      "viaggio_rosa": false,
+      "is_comfort": false,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Rouen"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMjYwOTAyNTQQARILCAISB3UwaDI5YngaCwgCEgd1MGgxNDRj"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1030958042-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1030958042",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1030958042-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 07:30:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "432 Résidence les Quatre Soleils, 38750 Huez, France",
+        "latitude": 45.08784,
+        "longitude": 6.068213,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "60 Rue Ampère, 38000 Grenoble, France",
+        "latitude": 45.180764,
+        "longitude": 5.70488,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 2,
+      "seats": 2,
+      "duration": {
+        "value": 4200,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 62,
+        "unity": "km"
+      },
+      "permanent_id": "1030958042-huez-grenoble",
+      "car": {
+        "id": "1994125",
+        "model": "A4",
+        "make": "AUDI",
+        "comfort": "Comfortable",
+        "comfort_nb_star": 3
+      },
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "auto",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Saint-Nazaire"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMzA5NTgwNDIQARILCAISB3UwaDI2cGYaCwgCEgd1MGgxMWJm"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1019929970-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1019929970",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1019929970-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 08:30:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "65 Avenue des Jeux, Huez, France",
+        "latitude": 45.090874,
+        "longitude": 6.067539,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "Vallier Catane",
+        "latitude": 45.180147,
+        "longitude": 5.706223,
+        "country_code": "FR",
+        "meeting_point_id": 1633
+      },
+      "arrival_meeting_point": {
+        "id": 1633,
+        "name": "Vallier Catane",
+        "full_name": "Vallier Catane, Grenoble",
+        "city_name": "Grenoble",
+        "address": "58 Boulevard Joseph Vallier, 38100 Grenoble",
+        "latitude": 45.180147,
+        "longitude": 5.706223,
+        "country_code": "FR",
+        "tags": []
+      },
+      "price": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 2,
+      "seats": 2,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 61,
+        "unity": "km"
+      },
+      "permanent_id": "1019929970-huez-grenoble",
+      "car": {
+        "id": "87101415",
+        "model": "FIORINO QUBO",
+        "make": "FIAT",
+        "comfort": "Normal",
+        "comfort_nb_star": 2
+      },
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Le Mans"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMTk5Mjk5NzAQARILCAISB3UwaDJkMGQaCwgCEgd1MGgxMWJn"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1027763354-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1027763354",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1027763354-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 09:00:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "51 Route de la Poste, 38750 Alpe d'Huez, France",
+        "latitude": 45.090904,
+        "longitude": 6.064769,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "58 Boulevard Joseph Vallier, 38100 Grenoble",
+        "latitude": 45.180145,
+        "longitude": 5.706223,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 7.5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£7.50",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1.5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.50"
+      },
+      "seats_left": 1,
+      "seats": 1,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 61,
+        "unity": "km"
+      },
+      "permanent_id": "1027763354-huez-grenoble",
+      "car": {
+        "id": "13211970",
+        "model": "Q3",
+        "make": "AUDI",
+        "comfort": "Normal",
+        "comfort_nb_star": 2
+      },
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Rouen"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMjc3NjMzNTQQARILCAISB3UwaDJkMDgaCwgCEgd1MGgxMWJn"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1032089402-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1032089402",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1032089402-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 10:10:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "51 Route de la Poste, 38750 Alpe d'Huez, France",
+        "latitude": 45.090906,
+        "longitude": 6.064769,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "58 Boulevard Joseph Vallier, 38100 Grenoble",
+        "latitude": 45.180147,
+        "longitude": 5.706223,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 1,
+      "seats": 1,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 61,
+        "unity": "km"
+      },
+      "permanent_id": "1032089402-huez-grenoble",
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Nancy"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMzIwODk0MDIQARILCAISB3UwaDJkMDgaCwgCEgd1MGgxMWJn"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1033527188-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1033527188",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1033527188-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 10:20:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "77 Chemin de la Chapelle, 38750 Huez, France",
+        "latitude": 45.089795,
+        "longitude": 6.068443,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "Grenoble Grand Place",
+        "latitude": 45.158022,
+        "longitude": 5.732758,
+        "country_code": "FR",
+        "meeting_point_id": 1632
+      },
+      "arrival_meeting_point": {
+        "id": 1632,
+        "name": "Grenoble Grand Place",
+        "full_name": "Grenoble Grand Place, Grenoble",
+        "city_name": "Grenoble",
+        "address": "55 Grand Place, 38100 Grenoble",
+        "latitude": 45.158022,
+        "longitude": 5.732758,
+        "country_code": "FR",
+        "tags": []
+      },
+      "price": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 3,
+      "seats": 3,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 62,
+        "unity": "km"
+      },
+      "permanent_id": "1033527188-huez-grenoble",
+      "viaggio_rosa": false,
+      "is_comfort": false,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Saint-Martin-Bellevue"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMzM1MjcxODgQARILCAISB3UwaDJkMDYaCwgCEgd1MGgwZmt5"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1032561956-huez-fontaine?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-fontaine-1032561956",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1032561956-huez-fontaine/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 10:30:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "Alpe d'Huez, Route de la Poste, Alpe d'Huez, France",
+        "latitude": 45.090906,
+        "longitude": 6.064769,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Fontaine",
+        "address": "O'sandwichs",
+        "latitude": 45.192311,
+        "longitude": 5.69962,
+        "country_code": "FR",
+        "meeting_point_id": 921190
+      },
+      "arrival_meeting_point": {
+        "id": 921190,
+        "name": "O'sandwichs",
+        "full_name": "O'sandwichs, Fontaine",
+        "city_name": "Fontaine",
+        "address": "1-5 Avenue du Vercors, 38600 Fontaine, France",
+        "latitude": 45.192311,
+        "longitude": 5.69962,
+        "country_code": "FR",
+        "tags": []
+      },
+      "price": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 4,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£4",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 2,
+      "seats": 2,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 62,
+        "unity": "km"
+      },
+      "permanent_id": "1032561956-huez-fontaine",
+      "viaggio_rosa": false,
+      "is_comfort": false,
+      "freeway": true,
+      "booking_mode": "auto",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Fontaine",
+        "Tarbes"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMzI1NjE5NTYQARILCAISB3UwaDJkMDgaCwgCEgd1MGgxMWVu"
+    },
+    {
+      "links": {
+        "_self": "https://api.blablacar.com/api/v2/trips/1028063204-huez-grenoble?_locale=en_GB",
+        "_front": "https://www.blablacar.co.uk/trip-huez-grenoble-1028063204",
+        "_threads": "https://api.blablacar.com/api/v2/trips/1028063204-huez-grenoble/threads?_locale=en_GB"
+      },
+      "departure_date": "17/03/2018 11:00:00",
+      "departure_place": {
+        "city_name": "Huez",
+        "address": "50 Route de la Poste, Huez, France",
+        "latitude": 45.091068,
+        "longitude": 6.064817,
+        "country_code": "FR"
+      },
+      "arrival_place": {
+        "city_name": "Grenoble",
+        "address": "Grenoble, France",
+        "latitude": 45.188529,
+        "longitude": 5.724524,
+        "country_code": "FR"
+      },
+      "price": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "price_with_commission": {
+        "value": 6,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£6.00",
+        "price_color": "BLACK"
+      },
+      "price_without_commission": {
+        "value": 5,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£5",
+        "price_color": "BLACK"
+      },
+      "commission": {
+        "value": 1,
+        "currency": "GBP",
+        "symbol": "£",
+        "string_value": "£1.00"
+      },
+      "seats_left": 1,
+      "seats": 2,
+      "duration": {
+        "value": 4800,
+        "unity": "s"
+      },
+      "distance": {
+        "value": 63,
+        "unity": "km"
+      },
+      "permanent_id": "1028063204-huez-grenoble",
+      "car": {
+        "id": "65387820",
+        "model": "2008",
+        "make": "PEUGEOT",
+        "comfort": "Normal",
+        "comfort_nb_star": 2
+      },
+      "viaggio_rosa": false,
+      "is_comfort": true,
+      "freeway": true,
+      "booking_mode": "manual",
+      "booking_type": "online",
+      "locations_to_display": [
+        "Huez",
+        "Grenoble",
+        "Paris"
+      ],
+      "corridoring_type": "PLANNED",
+      "trip_details_id": "Cg4KCjEwMjgwNjMyMDQQARILCAISB3UwaDJkMDgaCwgCEgd1MGgxNDYy"
+    }
+  ],
+  "top_trips": [],
+  "facets": [
+    {
+      "name": "hour",
+      "type": "custom",
+      "items": [
+        {
+          "value": 7,
+          "count": 1,
+          "is_selected": true
+        },
+        {
+          "value": 8,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 9,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 10,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 11,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 12,
+          "count": 1,
+          "is_selected": true
+        }
+      ]
+    },
+    {
+      "name": "price",
+      "type": "custom",
+      "items": [
+        {
+          "value": 3,
+          "count": 1,
+          "is_selected": true
+        },
+        {
+          "value": 4,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 5,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 5.5,
+          "count": 1,
+          "is_selected": false
+        },
+        {
+          "value": 6.5,
+          "count": 1,
+          "is_selected": true
+        }
+      ]
+    }
+  ],
+  "distance": 59,
+  "duration": 4200,
+  "recommended_price": 5,
+  "savings": 15,
+  "lowest_price": 5,
+  "full_trips_count": 0,
+  "tracktor": "eNqlVE2P2yAU/C9cm1iAP8mxh/ZaVb2tVoi1sYNEIMI46jbKf+/zR7ybrIlkRYoc8wbeDMPgM6qdPaAd2nfyH9oMI17aznj3Dv+VBOjH7yughVe+64tJGuGCkCy5ItY0E5RFOM0Lwibk6GSpWqjXQrdyg7yFlo2Txr5pifrxIh+Ub9hIUaSUjfUPrjTKaZLSZKjfM1XCS/4mG2WgKcWk2OJ4S/I/GO+G37fhiaaJ0lRoZzqtN2jQw51sO+1btCugu1NHXgPIj9KV0ni0w7A/pb10Y12UXp2gz8x+kq5VtqeuZC2g07Cplgvd2CvR2AAozmhvO3cVO4JD5ZOqo1Ol5Afx967wsaKVotc7Dk5KNI2y3NlWzCv21s/kogPPRFnKo58bWAfv4257U9BY4tZV0gEg2hJKTlSqm3lsXbdy9EOrg4I3gvFlskxVMO8FEUwzzDBNk22fs+2n4yc4xiwtcEIXIMIYZSzHCxDN8yyOlxtSXLAELzWEFTSHKC2uSjPC0myEamu8UGbiKnAGTe+5XjezU+Dwy3kcQUAOwkBEYPNg2YOtj+enbSk0RPw6LjsHU8p3WPvz+68+nU5BlriAh2gkd3ArTAOpxDM05XUC8klWnwauZd2fyGUTUhd0/zl1LIn627ookCRfFdKwwmAIbhSmq/2LozgOKMxWCQxG8UZgttpCGmV5QGCM1x1y6EY8ZyEoZEnokFfGMHQxn1SYhuTRr/LiRwYGPg7P3ZL8QQbjdRlc/kQ96x98ykMGLh3v6+U/3inLqA==",
+  "sorting_algorithm": "trip_date"
+}

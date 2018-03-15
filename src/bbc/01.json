@@ -1,0 +1,22 @@
+{
+  "links": {
+    "_self": "https://api.blablacar.com/api/v2/trips?_locale=en_GB",
+    "_front": "https://www.blablacar.co.uk/search?fn=huez&tn=le+bourg+d%27oisans&db=17/03/2018&de=17/03/2018"
+  },
+  "pager": {
+    "page": 1,
+    "pages": 1,
+    "total": 0,
+    "limit": 100
+  },
+  "trips": [],
+  "top_trips": [],
+  "facets": [],
+  "distance": 11,
+  "duration": 1200,
+  "recommended_price": 1,
+  "savings": 3,
+  "full_trips_count": 0,
+  "tracktor": "eNptUFtqwzAQvErQTz+aFCmJ8/ABeoDSv1LERlo7AsUyeoS2IXfvWopdEgrC1s7szoz2whrvTqxmx4Q/bJ4rqVzqov+mv0aiXt9GwkI0MQ3gunrhOyE265FxXXujNi+82u7E/sb0HpUJhDdgA85ZdCRpcXZwybcz/eRMgC6wgfjXmOB720rsK1HwO9MV50Mcwh8tNUSUB2xNR6JLLnYLvlqI7TvndT7P+ctujdjp+7blqq72dKa2HFN6DMnGwGpOpt70sknWyh69wi5mtDE2oi84qGjOJD+FOqMPxg2JNDZASvmtQYJtaUMdzYwCZHFhR1rX+IZCZiSHLXXvjUJ5gq8H4G8iIAx5S3E20LbGSe8CTBNHFydzSLRKUAr7OAk4T/fy2mFXrEDSeY2eCAiKIA/apMnHNU3Asg9rToZugvPrbWVGU9/H53yShKG8/gLNw9qS",
+  "sorting_algorithm": "trip_date"
+}
