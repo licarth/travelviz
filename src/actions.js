@@ -14,6 +14,10 @@ export const ADD_SEGMENTS = 'ADD_SEGMENTS'
 export const START_SEARCH = 'START_SEARCH'
 export const CLICKED_LOCATION = 'CLICKED_LOCATION'
 export const LOCATION_INFORMATION = 'LOCATION_INFORMATION'
+export const MOUSE_POSITION = 'MOUSE_POSITION'
+export const MOUSE_OVER_SEGMENT = 'MOUSE_OVER_SEGMENT'
+export const MOUSE_OUT_SEGMENT = 'MOUSE_OUT_SEGMENT'
+
 // export const SET_DEPARTURE = 'SET_DEPARTURE'
 
 /*
@@ -50,6 +54,20 @@ export function locationInformation({ locationQualifier, name, latlng }) {
         latlng,
     }
 }
+
+export function mousePosition(latlng) {
+    return {
+        type: MOUSE_POSITION,
+        latlng,
+    }
+}
+
+// export function mouseOverSegment() {
+//     return {
+//         type: MOUSE_OVER_SEGMENT,
+//         latlng,
+//     }
+// }
 
 function startSearch({ departFrom, arriveBy, departure, arrival }) {
     return {

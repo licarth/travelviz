@@ -7,6 +7,7 @@ import {
   SET_ARRIVAL,
   CLICKED_LOCATION,
   LOCATION_INFORMATION,
+  MOUSE_POSITION,
 } from './actions'
 
 function selectedSegmentIds(state = [], action) {
@@ -68,12 +69,19 @@ function locationInformation(state = {}, action) {
   }
 }
 
+function mousePosition(state = {}, action) {
+  if (action.type === MOUSE_POSITION){
+    return action.latlng
+  } else return state;
+}
+
 const app = combineReducers({
   selectedSegmentIds,
   scheduledRequests,
   segments,
   userInput,
   locationInformation,
+  mousePosition,
 })
 
 export default app

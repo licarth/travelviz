@@ -2,7 +2,7 @@
 import React from "react"
 import _ from "lodash"
 import { compose, withProps, lifecycle } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, Circle } from "react-google-maps"
 import { dispatch, connect } from 'react-redux'
 import { clickedLocation } from "./actions";
 
@@ -11,7 +11,15 @@ const key = 'AIzaSyBDVXClEZonIcG76-_kVfhzApvP87vFnYw';
 const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
 
 const mapStateToProps = state => {
-    return {}
+    console.log(state.mousePosition);
+    let newState;
+    // if (state.userInput.departure) {
+    //     newState
+    // }
+    return {
+        ...state.userInput,
+        mousePosition: state.mousePosition,
+    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -27,15 +35,102 @@ const mapDispatchToProps = dispatch => {
 }
 
 class MyMap extends React.Component {
+
+
     render() {
         const props = this.props;
+
+        let onClick;
+        if (!props.arrival) {
+            onClick = (e) => props.onNextClick({
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng(),
+            })
+        }
+
+        let onMouseMove
+
+        if (!props.arrival) {
+            onMouseMove = (e) => {
+                props.onMouseMove({
+                    lat: e.latLng.lat(),
+                    lng: e.latLng.lng(),
+                })
+            }
+        }
+
+        let circles = [];
+
+        if (!props.departure) {
+            circles.push(
+                <Circle
+                    center={props.mousePosition}
+                    radius={10000}
+                    onClick={onClick}
+                    options={{
+                        fillColor: '#a7f442',
+                        fillOpacity: 0.35,
+                        strokeColor: '#a7f442',
+                        strokeOpacity: 0.8,
+                    }}
+                    onMouseMove={(e) => {
+                        props.onMouseMove({
+                            lat: e.latLng.lat(),
+                            lng: e.latLng.lng(),
+                        })
+                    }}
+                />
+            )
+        } else {
+            circles.push(<Circle
+                center={props.departure.latlng}
+                radius={10000}
+                onClick={onClick}
+                options={{
+                    fillColor: '#a7f442',
+                    fillOpacity: 0.35,
+                    strokeColor: '#a7f442',
+                    strokeOpacity: 0.8,
+                }}
+            />)
+            if (!props.arrival) {
+                circles.push(<Circle
+                    center={props.mousePosition}
+                    radius={10000}
+                    onClick={onClick}
+                    options={{
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                    }}
+                    onMouseMove={(e) => {
+                        props.onMouseMove({
+                            lat: e.latLng.lat(),
+                            lng: e.latLng.lng(),
+                        })
+                    }}
+                />)
+            } else {
+                circles.push(<Circle
+                    center={props.arrival.latlng}
+                    radius={10000}
+                    onClick={onClick}
+                    options={{
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                    }}
+                />)
+            }
+        }
+
         return <GoogleMap
             defaultZoom={8}
             ref={props.onMapMounted}
-            onClick={(e) => props.onNextClick({
-                lat: e.latLng.lat(),
-                lng: e.latLng.lng(),
-            })}
+            onClick={onClick}
+            onMouseMove={onMouseMove}
             center={props.center}
             defaultOptions={{
                 styles: [
@@ -120,20 +215,23 @@ class MyMap extends React.Component {
                 ]
             }}>
             <SearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} controlPosition={google.maps.ControlPosition.TOP_LEFT} onPlacesChanged={props.onPlacesChanged}>
-                <input type="text" placeholder="Customized your placeholder" style={{
-                    boxSizing: `border-box`,
-                    border: `1px solid transparent`,
-                    width: `240px`,
-                    height: `32px`,
-                    marginTop: `27px`,
-                    padding: `0 12px`,
-                    borderRadius: `3px`,
-                    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                    fontSize: `14px`,
-                    outline: `none`,
-                    textOverflow: `ellipses`,
-                }} />
+                <input type="text"
+                    style={{
+                        boxSizing: `border-box`,
+                        border: `1px solid transparent`,
+                        width: `240px`,
+                        height: `32px`,
+                        marginTop: `27px`,
+                        padding: `0 12px`,
+                        borderRadius: `3px`,
+                        boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                        fontSize: `14px`,
+                        outline: `none`,
+                        textOverflow: `ellipses`,
+                    }} />
             </SearchBox>
+
+            {circles}
         </GoogleMap>
     }
 }
@@ -192,7 +290,7 @@ let MapContainer = compose(
                         markers: nextMarkers,
                     });
                     // refs.map.fitBounds(bounds);
-                }
+                },
             })
         },
     }),

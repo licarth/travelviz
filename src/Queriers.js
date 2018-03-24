@@ -25,6 +25,8 @@ export const blablacar = ({
             key: "a6c44414647b42c090ae15e2cc51a6be",
             fc: `${departure.latlng.lat}|${departure.latlng.lng}`,
             tc: `${arrival.latlng.lat}|${arrival.latlng.lng}`,
+            limit: 100,
+            radius: 10,
         }) // sends a JSON post body
         // .set('X-API-Key', 'foobar')
         .set('accept', 'json')

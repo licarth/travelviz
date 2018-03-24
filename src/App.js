@@ -14,20 +14,26 @@ import _ from 'lodash'
 import MapContainer from './Map'
 import { blablacar } from "./Queriers";
 import { connect } from 'react-redux'
-import { START_SEARCH, search, getLocationName, clickedLocation } from './actions';
+import { START_SEARCH, search, getLocationName, clickedLocation, mousePosition } from './actions';
 
+const now = moment();
 class App extends Component {
 
   render() {
     const props = this.props;
-    // if (props.departure && props.arrival && _.isEmpty(props.tripGroups[0].trips)) {
-    //   this.props.startSearch({
-    //     departure: props.departure,
-    //     arrival: props.arrival,
-    //   })
-    // }
-    const departFrom = moment();
-    const arriveBy = departFrom.clone().add(10, 'hours');
+    
+    let departFrom;
+    let arriveBy;
+
+    const trips = props.tripGroups[0].trips;
+    console.log(trips)
+    departFrom = _.defaultTo(_.get(_.minBy(trips, 'departureMoment'), 'departureMoment'), now)
+    arriveBy = _.defaultTo(_.get(_.maxBy(trips, 'arrivalMoment'), 'arrivalMoment'), now.clone().add(10, 'hours'))
+
+    arriveBy = _.min([arriveBy, departFrom.clone().add(2, 'days')])
+
+    console.log(departFrom)
+    console.log(arriveBy)
 
     let onNextClick;
     if (!props.departure) {
@@ -52,6 +58,7 @@ class App extends Component {
         <div className="map">
           <MapContainer
             onNextClick={onNextClick}
+            onMouseMove={props.onMouseMove}
           />
         </div>
         <div
@@ -132,6 +139,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(getLocationName(latlng, "arrival"))
       dispatch(clickedLocation(latlng, "arrival"))
     },
+    onMouseMove: (latlng) =>{
+      dispatch(mousePosition(latlng))
+    }
   }
 }
 
