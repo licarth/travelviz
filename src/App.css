@@ -1,4 +1,14 @@
 .App {
   height: 100%;
   display: grid;
+  /* grid-template-areas:  "map"
+                        "timeline"; */
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+                      }
+
+.map {
+  position: relative;
+  width: 100%;
+  /* grid-area: "map"; */
 }
