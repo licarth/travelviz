@@ -12,8 +12,10 @@ const cmPerHour = 1;
 const InnerTimeviz = ({
     departFrom,
     arriveBy,
-    tripGroups,
-    clusters,
+    segments,
+    searchAreas,
+    searches,
+    searchAreaOrder,
     onSegmentClick,
     containerWidth,
     containerHeight,
@@ -51,12 +53,12 @@ const InnerTimeviz = ({
 
         const dep = {
             x: leftInpercent * containerWidth,
-            y: labelHeight / 2 + departureCluster / clusters.length * containerHeight
+            y: labelHeight / 2 + departureCluster / (searchAreaOrder.length - 1) * (containerHeight - labelHeight)
         }
 
         const arr = {
             x: (leftInpercent + widthInPercent) * containerWidth,
-            y: labelHeight / 2 + arrivalCluster / clusters.length * containerHeight,
+            y: labelHeight / 2 + arrivalCluster / (searchAreaOrder.length - 1) * (containerHeight - labelHeight),
         }
 
         const strokeColor = "rgb(206, 175, 0)";
@@ -99,6 +101,25 @@ const InnerTimeviz = ({
         </g>
     })
 
+    const searchAreaPositionById = _(searchAreaOrder)
+        .map((v, i) => ({ v, i })).keyBy('v').mapValues((v) => v.i).value();
+
+    const areaCouples = [];
+
+    for (let i = 0; i < searchAreaOrder.length; i++) {
+        const area1 = searchAreaOrder[i];
+        for (let j = i + 1; j < searchAreaOrder.length; j++) {
+            const area2 = searchAreaOrder[j];
+            areaCouples.push(
+                {
+                    id: area1 + '-' + area2,
+                    from: i,
+                    to: j,
+                });
+        }
+    }
+
+
     const TripGroup = ({ departureCluster, arrivalCluster, trips }) => {
         return _.map(trips, (t) => {
             const childProps = {
@@ -111,15 +132,39 @@ const InnerTimeviz = ({
         })
     }
 
+    const lines = _.map(areaCouples,
+        areaCouple => {
+            const searchIds = searches.searchIdsByAreaCouple.get(areaCouple.id);
+            const segmentIds = _.flatMap(searchIds, id => searches.segmentIdsBySearchId.get(id));
+            const segments1 = _(segmentIds)
+                .map(id => segments.get(id))
+                .compact()
+                .value();
 
-    const lines = _.map(tripGroups, (tg) => {
-        return <TripGroup {..._.pick(tg, [
-            'trips',
-            'departureCluster',
-            'arrivalCluster',
-        ])}
-        />
-    })
+            if (segments1.length > 0) {
+                return <TripGroup
+                    trips={segments1}
+                    departureCluster={areaCouple.from}
+                    arrivalCluster={areaCouple.to}
+                />
+            }
+
+        })
+
+    console.log(lines)
+    //I know position ids. 
+    // constC
+
+
+
+    // const lines = _.map([], (tg) => {
+    //     return <TripGroup {..._.pick(tg, [
+    //         'trips',
+    //         'departureCluster',
+    //         'arrivalCluster',
+    //     ])}
+    //     />
+    // })
 
     const markerHeightInVw = 20;
 
@@ -150,7 +195,7 @@ const InnerTimeviz = ({
     >
         <div className="tripsContainer"
             style={{
-                gridTemplateRows: `repeat(${clusters.length}, 1fr)`,
+                gridTemplateRows: `repeat(${searchAreaOrder.length - 1}, 1fr)`,
             }}
         >
             <svg
@@ -159,7 +204,7 @@ const InnerTimeviz = ({
             >
                 {lines}
             </svg>
-            {_.map(clusters, ({ name }, i) =>
+            {_.map(searchAreaOrder, (id, i) =>
                 <div
                     className="clusterLabelContainer"
                     style={{
@@ -167,7 +212,7 @@ const InnerTimeviz = ({
                         gridColumn: 1,
                         gridRowStart: i + 1,
                     }}>
-                    <div className="clusterLabel">{name}</div>
+                    <div className="clusterLabel">{searchAreas[id].name}</div>
                 </div>
             )}
         </div>
@@ -190,15 +235,16 @@ const Timeviz = (props) => {
     const {
         departFrom,
         arriveBy,
-        clusters,
-        tripGroups,
+        searchAreas,
+        searchAreaOrder,
+        segments,
         onSegmentClick,
     } = props;
     const width = `${cmPerHour * arriveBy.diff(departFrom, 'hour') / (arriveByPosition - departFromPosition)}cm`
 
     return <div
         style={{
-            // width,
+            width,
         }}
         className="timevizContainer">
         {React.createElement(Dimensions({

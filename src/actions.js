@@ -1,6 +1,7 @@
 import { blablacar } from "./Queriers";
 import Rx from "rxjs/Observable";
 import { invertGeoCode } from "./InvertedGeoCoding";
+import uuidv4 from 'uuid/v4';
 
 /*
  * action types
@@ -12,8 +13,9 @@ import { invertGeoCode } from "./InvertedGeoCoding";
 export const SELECT_SEGMENT = 'SELECT_SEGMENT'
 export const ADD_SEGMENTS = 'ADD_SEGMENTS'
 export const START_SEARCH = 'START_SEARCH'
-export const CLICKED_LOCATION = 'CLICKED_LOCATION'
-export const LOCATION_INFORMATION = 'LOCATION_INFORMATION'
+export const END_SEARCH = 'END_SEARCH'
+export const ADD_SEARCH_AREA = 'ADD_AREA'
+export const AREA_INFORMATION = 'AREA_INFORMATION'
 export const MOUSE_POSITION = 'MOUSE_POSITION'
 export const MOUSE_OVER_SEGMENT = 'MOUSE_OVER_SEGMENT'
 export const MOUSE_OUT_SEGMENT = 'MOUSE_OUT_SEGMENT'
@@ -31,25 +33,32 @@ export function clickSegment(segmentId, segment) {
     }
 }
 
-export function searchResults(segments) {
+export function searchResults(id, optionsHash, segments) {
     return {
         type: ADD_SEGMENTS,
+        id,
+        optionsHash,
         segments,
     }
 }
 
-export function clickedLocation(latlng, locationQualifier) {
-    return {
-        type: CLICKED_LOCATION,
-        latlng,
-        locationQualifier,
+export function addSearchArea(latlng, radius, positionInList) {
+    return function (dispatch, getState) {
+        const id = uuidv4();
+        dispatch(getAreaName(id, latlng))
+        dispatch({
+            type: ADD_SEARCH_AREA,
+            id,
+            latlng,
+            positionInList,
+        })
     }
 }
 
-export function locationInformation({ locationQualifier, name, latlng }) {
+export function areaInformation(id, name, latlng) {
     return {
-        type: LOCATION_INFORMATION,
-        locationQualifier,
+        type: AREA_INFORMATION,
+        id,
         name,
         latlng,
     }
@@ -62,40 +71,34 @@ export function mousePosition(latlng) {
     }
 }
 
-// export function mouseOverSegment() {
-//     return {
-//         type: MOUSE_OVER_SEGMENT,
-//         latlng,
-//     }
-// }
-
-function startSearch({ departFrom, arriveBy, departure, arrival }) {
+function startSearch(id, optionsHash, options) {
     return {
         type: START_SEARCH,
-        departFrom,
-        arriveBy,
-        departure,
-        arrival,
+        id,
+        optionsHash,
+        options,
     }
 }
 
-export function search(opts) {
+export function search(optionsHash, options) {
     return function (dispatch) {
-        dispatch(startSearch(opts))
-        getLocationName(opts)
-        getLocationName(opts)
-        return blablacar(opts)
-            .then(segments => dispatch(searchResults(segments)))
+        const id = uuidv4();
+        dispatch(startSearch(id, optionsHash, options))
+        return blablacar(options)
+            .then(segments => {
+                dispatch(searchResults(id, optionsHash, segments))
+                dispatch({ type: END_SEARCH, optionsHash })
+            })
     }
 }
 
-export function getLocationName(latlng, locationQualifier) {
+export function getAreaName(id, latlng) {
     return function (dispatch) {
         return invertGeoCode(latlng)
-            .then(name => dispatch(locationInformation({
-                locationQualifier,
+            .then(name => dispatch(areaInformation(
+                id,
                 name,
                 latlng
-            })))
+            )))
     }
 }

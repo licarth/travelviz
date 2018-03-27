@@ -5,10 +5,14 @@ import {
   ADD_SEGMENTS,
   SET_DEPARTURE,
   SET_ARRIVAL,
-  CLICKED_LOCATION,
-  LOCATION_INFORMATION,
+  ADD_SEARCH_AREA,
+  AREA_INFORMATION,
   MOUSE_POSITION,
+  START_SEARCH,
+  END_SEARCH,
 } from './actions'
+import { Set, Map } from 'immutable'
+
 
 function selectedSegmentIds(state = [], action) {
   switch (action.type) {
@@ -28,49 +32,85 @@ function scheduledRequests(state = [], action) {
   }
 }
 
-function segments(state = [], action) {
-  switch (action.type) {
+function segments(state = new Map(), a) {
+  switch (a.type) {
     case ADD_SEGMENTS:
-      return _.union(state, action.segments)
+      return state.merge(_.keyBy(a.segments, 'id'))
     default:
       return state
   }
 }
 
-function userInput(state = {}, action) {
-  switch (action.type) {
-    case CLICKED_LOCATION:
-      switch (action.locationQualifier) {
-        case "departure":
-          return { ...state, departure: { latlng: action.latlng } }
-        case "arrival":
-          return { ...state, arrival: { latlng: action.latlng } }
+function searches(state = {
+  inprogress: new Set(),
+  done: new Set(),
+  optionsBySearchId: new Map(),
+  segmentIdsBySearchId: new Map(),
+  searchIdsByAreaCouple: new Map(),
+}, a) {
+  switch (a.type) {
+    case START_SEARCH: {
+      const inprogress = state.inprogress.add(a.optionsHash)
+      const options = state.optionsBySearchId.set(a.id, a.options)
+      const key = `${a.options.departureArea.id}-${a.options.arrivalArea.id}`;
+      const searchIdsByAreaCouple = (
+        (state.searchIdsByAreaCouple.has(key))
+          ? state.searchIdsByAreaCouple.set(key, state.searchIdsByAreaCouple.get(key).push(a.id))
+          : state.searchIdsByAreaCouple.set(key, [a.id])
+      )
+      return _.merge({}, state, { inprogress, options, searchIdsByAreaCouple })
+    }
+    case END_SEARCH: {
+      const inprogress = state.inprogress.delete(a.optionsHash)
+      const done = state.done.add(a.optionsHash)
+      return _.merge({}, state, { inprogress, done })
+    }
+    case ADD_SEGMENTS: {
+      const segmentIdsBySearchId = state.segmentIdsBySearchId.set(a.id, _.map(a.segments, 'id'))
+      return _.merge({}, state, { segmentIdsBySearchId })
+    }
+  }
+  return state;
+}
+
+function searchAreaOrder(state = [], a) {
+  switch (a.type) {
+    case ADD_SEARCH_AREA:
+      switch (state.length) {
+        case 0:
+          return [a.id]
+        case 1:
+          return [state[0], a.id]
+        case 2:
+          return [state[0], a.id, state[1]]
         default:
-          return state;
+          // return [..._.initial(state), a.id, state[state.length - 1]]
+          return [state[0], a.id, state[2]]
       }
     default:
       return state
   }
 }
 
-function locationInformation(state = {}, action) {
-  switch (action.type) {
-    case LOCATION_INFORMATION:
-      switch (action.locationQualifier) {
-        case "departure":
-          return { ...state, departure: { latlng: action.latlng, name: action.name } }
-        case "arrival":
-          return { ...state, arrival: { latlng: action.latlng, name: action.name} }
-        default:
-          return state;
-      }
+function searchAreas(state = {}, a) {
+  switch (a.type) {
+    case AREA_INFORMATION:
+      return _.merge({}, state, { [a.id]: { name: a.name } });
+    case ADD_SEARCH_AREA:
+      return _.merge({}, state, {
+        [a.id]: {
+          id: a.id,
+          radius: a.radius,
+          latlng: a.latlng,
+        }
+      });
     default:
-      return state
+      return state;
   }
 }
 
 function mousePosition(state = {}, action) {
-  if (action.type === MOUSE_POSITION){
+  if (action.type === MOUSE_POSITION) {
     return action.latlng
   } else return state;
 }
@@ -79,9 +119,10 @@ const app = combineReducers({
   selectedSegmentIds,
   scheduledRequests,
   segments,
-  userInput,
-  locationInformation,
+  searchAreaOrder,
+  searchAreas,
   mousePosition,
+  searches,
 })
 
 export default app

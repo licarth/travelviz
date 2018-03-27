@@ -52,6 +52,7 @@ html {
 
 .clusterLabelContainer {
     background: rgb(71, 46, 0);
+    height: 1em;
     display: grid;
 }
 
