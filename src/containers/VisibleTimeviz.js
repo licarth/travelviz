@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { clickSegment } from '../actions'
+import { clickSegment, timevizZoom } from '../actions'
 import Timeviz from '../Timeviz.js'
 
 const mapStateToProps = state => {
@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onSegmentClick: segmentId => {
       dispatch(clickSegment(segmentId))
-    }
+    },
+    timevizZoom: (delta) => dispatch(timevizZoom(delta)),
   }
 }
 

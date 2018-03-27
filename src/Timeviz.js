@@ -4,253 +4,108 @@ import moment from 'moment';
 import _ from 'lodash';
 import Dimensions from 'react-dimensions'
 import Radium from 'radium';
+import { timevizZoom } from './actions';
+import InnerTimeviz from './InnerTimeviz'
 
 const departFromPosition = 0.1;
 const arriveByPosition = 0.9;
-const cmPerHour = 1;
 
-const InnerTimeviz = ({
-    departFrom,
-    arriveBy,
-    segments,
-    searchAreas,
-    searches,
-    searchAreaOrder,
-    onSegmentClick,
-    containerWidth,
-    containerHeight,
-}) => {
-    const labelHeight = containerHeight * 0.05;
-    const a = (departFromPosition - arriveByPosition) /
-        (departFrom.diff(arriveBy, 'seconds'))
-
-    //Moment of x=0
-    const mRef = departFrom.clone().add(-departFromPosition / a, 'seconds')
-
-    const xPercentforMoment = (moment) => {
-        return a * moment.diff(mRef, 'seconds');
+class Timeviz extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onWheel = this.onWheel.bind(this)
+        this.state = {
+            // cmPerHour: 1,
+            pxPerHour: 100,
+            // center: moment(),
+            scrollLeft: 0,
+        }
     }
 
-    const momentForXPercent = (x) => {
-        return mRef.clone().add(x / a, 'seconds')
+    componentDidUpdate() {
+        this.refs.c1.scrollLeft = this.state.scrollLeft;
     }
 
-    const Trip = Radium(({
-        departureMoment,
-        arrivalMoment,
-        departureCluster,
-        arrivalCluster,
-    }) => {
-        const leftInpercent = xPercentforMoment(moment(departureMoment));
-        const widthInPercent = xPercentforMoment(moment(arrivalMoment)) - leftInpercent;
-        const height = arrivalCluster - departureCluster;
+    componentDidMount() {
+        this.refs.c1.scrollLeft = this.state.scrollLeft;
+    }
 
-        const childProps = {
-            containerHeight: containerHeight * height,
+    onWheel(deltaY, x) {
+        const s2surS1 = (1 - deltaY * 0.001);
+        const sl = this.state.scrollLeft;
+        this.setState({
+            // cmPerHour: this.state.cmPerHour * (1 - deltaY * 0.001),
+            pxPerHour: this.state.pxPerHour * s2surS1,
+                        // center: 
+            // scrollLeft: this.state.scrollLeft - deltaY * x * 0.001,
+            // scrollLeft: Math.max(0, this.state.scrollLeft - x * (1 - s2surS1))
+            scrollLeft: (this.widthInPixels() > this.props.containerWidth) ? Math.max(0, (sl + x) * s2surS1 - x) : 0,
+        })
+        // console.log(this.state.scrollLeft)
+        console.log(`scrollLeft=${this.state.scrollLeft}, x=${x}`)
+    }
+
+    widthInPixels() {
+        return Math.max(this.state.pxPerHour * this.props.arriveBy.diff(this.props.departFrom, 'hour') / (arriveByPosition - departFromPosition), this.props.containerWidth);
+    }
+
+    render() {
+        const {
+            departFrom,
+            arriveBy,
+            searchAreas,
+            searchAreaOrder,
+            segments,
+            onSegmentClick,
+            containerHeight,
             containerWidth,
-            widthInPercent,
-        }
+        } = this.props;
 
-        const dep = {
-            x: leftInpercent * containerWidth,
-            y: labelHeight / 2 + departureCluster / (searchAreaOrder.length - 1) * (containerHeight - labelHeight)
-        }
+        console.log(containerHeight, containerWidth)
 
-        const arr = {
-            x: (leftInpercent + widthInPercent) * containerWidth,
-            y: labelHeight / 2 + arrivalCluster / (searchAreaOrder.length - 1) * (containerHeight - labelHeight),
-        }
+        // const width = `${this.state.cmPerHour * arriveBy.diff(departFrom, 'hour') / (arriveByPosition - departFromPosition)}cm`
+        const width = `${this.widthInPixels()}px`
 
-        const strokeColor = "rgb(206, 175, 0)";
-
-        return <g
-        // style={{
-        //     ':hover': {
-        //         opacity: 1,
-        //         stroke: 'red',
-        //     },
-        // }}over': {
-        //         opacity: 1,
-        //         stroke: 'red',
-        //     },
-        // }}
-        >
-            <circle cx={dep.x} cy={dep.y} r={10} />
-            <circle cx={arr.x} cy={arr.y} r={10} />
-            <line
-                x1={dep.x}
-                y1={dep.y}
-
-                x2={arr.x}
-                y2={arr.y}
-                stroke={strokeColor}
-                strokeLinecap="round"
-                strokeWidth={10}
-                opacity={0.6}
-                onClick={e => {
-                    // e.preventDefault();
-                    onSegmentClick("segment1")
-                }}
-                style={{
-                    ':hover': {
-                        opacity: 1,
-                        stroke: 'red',
-                    },
-                }}
-            />
-        </g>
-    })
-
-    const searchAreaPositionById = _(searchAreaOrder)
-        .map((v, i) => ({ v, i })).keyBy('v').mapValues((v) => v.i).value();
-
-    const areaCouples = [];
-
-    for (let i = 0; i < searchAreaOrder.length; i++) {
-        const area1 = searchAreaOrder[i];
-        for (let j = i + 1; j < searchAreaOrder.length; j++) {
-            const area2 = searchAreaOrder[j];
-            areaCouples.push(
-                {
-                    id: area1 + '-' + area2,
-                    from: i,
-                    to: j,
-                });
-        }
-    }
-
-
-    const TripGroup = ({ departureCluster, arrivalCluster, trips }) => {
-        return _.map(trips, (t) => {
-            const childProps = {
-                departureMoment: t.departureMoment,
-                arrivalMoment: t.arrivalMoment,
-                departureCluster,
-                arrivalCluster,
-            }
-            return <Trip {...childProps} />
-        })
-    }
-
-    const lines = _.map(areaCouples,
-        areaCouple => {
-            const searchIds = searches.searchIdsByAreaCouple.get(areaCouple.id);
-            const segmentIds = _.flatMap(searchIds, id => searches.segmentIdsBySearchId.get(id));
-            const segments1 = _(segmentIds)
-                .map(id => segments.get(id))
-                .compact()
-                .value();
-
-            if (segments1.length > 0) {
-                return <TripGroup
-                    trips={segments1}
-                    departureCluster={areaCouple.from}
-                    arrivalCluster={areaCouple.to}
-                />
-            }
-
-        })
-
-    console.log(lines)
-    //I know position ids. 
-    // constC
-
-
-
-    // const lines = _.map([], (tg) => {
-    //     return <TripGroup {..._.pick(tg, [
-    //         'trips',
-    //         'departureCluster',
-    //         'arrivalCluster',
-    //     ])}
-    //     />
-    // })
-
-    const markerHeightInVw = 20;
-
-    const HorizontalMarker = ({ text, m }) => {
-
-        return <div className="marker" style={{
-            position: "absolute",
-            top: `${- markerHeightInVw / 2}px`,
-            // top: `0`,
-            left: `${xPercentforMoment(m) * 100}%`,
-        }}>
-            <div
-                className="hMarker"
-                style={{
-                    borderLeft: "solid green",
-                    height: markerHeightInVw,
-                    left: "-0.5px",
-                }}><br></br></div>
-            <div className="label">
-                {m.format('LT')}<br></br>{text}
-            </div>
-        </div>
-    }
-
-    return <div className="timeviz"
-        style={{
-        }}
-    >
-        <div className="tripsContainer"
+        return <div
+            ref="c1"
             style={{
-                gridTemplateRows: `repeat(${searchAreaOrder.length - 1}, 1fr)`,
+                overflowX: "overlay",
+                height: "100%",
             }}
         >
-            <svg
-                viewBox={`0 0 ${containerWidth} ${containerHeight}`}
-                preserveAspectRatio="none"
-            >
-                {lines}
-            </svg>
-            {_.map(searchAreaOrder, (id, i) =>
-                <div
-                    className="clusterLabelContainer"
-                    style={{
-                        height: labelHeight,
-                        gridColumn: 1,
-                        gridRowStart: i + 1,
-                    }}>
-                    <div className="clusterLabel">{searchAreas[id].name}</div>
-                </div>
-            )}
-        </div>
-        <div className="timeline">
-            <div style={{
-                position: "relative",
-            }}>
-                <div style={{
-                    borderTop: "solid",
-                }}></div>
-                <HorizontalMarker text="Depart From" m={departFrom} />
-                <HorizontalMarker text="Arrive By" m={arriveBy} />
+            <div
+                style={{
+                    // overflowX: "overlay",
+                    height: "100%",
+                    width,
+                }}
+                className="timevizContainer">
+                <InnerTimeviz
+                    {..._.omit(this.props, ['containerHeight', 'containerWidth'])}
+                    onWheel={this.onWheel}
+                    width={this.state.cmPerHour}
+                />
+                {/* {React.createElement(Dimensions({
+                    className: "innerTimevizDimensions"
+                })(InnerTimeviz),
+                    {
+                        ...this.props,
+                        onWheel: this.onWheel,
+                    }, null)} */}
             </div>
         </div>
-    </div>
+    }
 }
 
-
-const Timeviz = (props) => {
-    const {
-        departFrom,
-        arriveBy,
-        searchAreas,
-        searchAreaOrder,
-        segments,
-        onSegmentClick,
-    } = props;
-    const width = `${cmPerHour * arriveBy.diff(departFrom, 'hour') / (arriveByPosition - departFromPosition)}cm`
-
-    return <div
-        style={{
-            width,
-        }}
-        className="timevizContainer">
-        {React.createElement(Dimensions({
-            className: "timevizDimensions"
-        })(InnerTimeviz), props, null)}
-    </div>
-}
+Timeviz = Dimensions({
+    className: "outerTimevizDimensions",
+    containerStyle: {
+        height: "100%",
+        padding: 0,
+        border: 0,
+        overflowX: "overlay",
+    },
+    elementResize: true,
+})(Timeviz)
 
 export default Timeviz;

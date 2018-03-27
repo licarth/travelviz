@@ -10,6 +10,7 @@ import {
   MOUSE_POSITION,
   START_SEARCH,
   END_SEARCH,
+  TIMEVIZ_ZOOM,
 } from './actions'
 import { Set, Map } from 'immutable'
 

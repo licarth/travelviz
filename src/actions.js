@@ -20,6 +20,8 @@ export const MOUSE_POSITION = 'MOUSE_POSITION'
 export const MOUSE_OVER_SEGMENT = 'MOUSE_OVER_SEGMENT'
 export const MOUSE_OUT_SEGMENT = 'MOUSE_OUT_SEGMENT'
 
+export const TIMEVIZ_ZOOM = 'TIMEVIZ_ZOOM'
+
 // export const SET_DEPARTURE = 'SET_DEPARTURE'
 
 /*
@@ -61,6 +63,14 @@ export function areaInformation(id, name, latlng) {
         id,
         name,
         latlng,
+    }
+}
+
+export function timevizZoom(delta, y) {
+    return {
+        type: TIMEVIZ_ZOOM,
+        delta,
+        y,
     }
 }
 

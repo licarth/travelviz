@@ -33,20 +33,14 @@ const Dashboard = ({ searchAreas, searchAreaOrder, segments, onLocationClick, on
                     onMouseMove={onMouseMove}
                 />
             </div>
-            <div
-                style={{
-                    overflowX: "overlay",
-                }}
-            >
-                <VisibleTimeviz
-                    departFrom={departFrom}
-                    arriveBy={arriveBy}
-                    searchAreas={searchAreas}
-                    searchAreaOrder={searchAreaOrder}
-                    segments={segments}
-                    // tripGroups={this.props.tripGroups}
-                />
-            </div>
+            <VisibleTimeviz
+                departFrom={departFrom}
+                arriveBy={arriveBy}
+                searchAreas={searchAreas}
+                searchAreaOrder={searchAreaOrder}
+                segments={segments}
+            // tripGroups={this.props.tripGroups}
+            />
         </div>
     );
 }
